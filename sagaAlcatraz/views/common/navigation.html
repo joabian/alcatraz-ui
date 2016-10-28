@@ -1,0 +1,39 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+   -- <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element" uib-dropdown>
+                    <img alt="image" class="img-circle" src="img/a4.jpg"/>
+                    <a uib-dropdown-toggle href>
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">Michael Zimber</strong>
+                             </span>
+                    </a>
+                    <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                        <li><a ui-sref="content.mis_comisiones">Mis comisiones</a></li>
+                        <li><a ui-sref="contentCambia.change_password">Cambiar contrase&ntildea</a></li>
+                        <li class="divider"></li>
+                        <li><a ui-sref="login">Cerrar sesi&oacuten</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li ng-class="{active: $state.includes('clientes')}">
+                <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">{{ 'Clientes' | translate }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">
+                    <li ui-sref-active="active"><a ui-sref="content.contactados">{{ 'Contactados' | translate }} </a></li>
+                    <li ui-sref-active="active"><a ui-sref="content.por_vencer">{{ 'Por vencer' | translate }} </a></li>
+                    <li ui-sref-active="active"><a ui-sref="content.vencidos">{{ 'Vencidos' | translate }} </a></li>
+                    <li ui-sref-active="active"><a ui-sref="content.nuevo_cliente">{{ 'Nuevo cliente' | translate }} </a></li>
+                   <!-- <li ui-sref-active="active"><a ui-sref="content.cli_detalles">{{ 'ver cliente' | translate }} </a></li>-->
+                </ul>
+            </li>
+            
+        </ul>
+
+    </div> 
+</nav>

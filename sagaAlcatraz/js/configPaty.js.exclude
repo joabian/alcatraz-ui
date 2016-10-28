@@ -1,0 +1,257 @@
+/**
+ * INSPINIA - Responsive Admin Theme
+ *
+ * Inspinia theme use AngularUI Router to manage routing and views
+ * Each view are defined as state.
+ * Initial there are written state for all view in theme.
+ *
+ */
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
+
+    // Configure Idle settings
+    IdleProvider.idle(5); // in seconds
+    IdleProvider.timeout(120); // in seconds
+
+    $urlRouterProvider.otherwise("/inicio/login");
+
+    $ocLazyLoadProvider.config({
+        // Set to true if you want to see what and when is dynamically loaded
+        debug: false
+    });
+
+
+
+    $stateProvider
+////////////inicio login
+    .state('inicio', {
+            abstract: true,
+            url: "/inicio",
+            templateUrl: "views/common/contentLogin.html"
+        })
+        .state('inicio.login', {
+            url: "/login",
+            templateUrl: "views/login.html",
+            data: { pageTitle: 'Inicio de sesi\u00F3n' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css','js/plugins/iCheck/icheck.min.js']
+                        }
+                    ]);
+                }
+                }
+            })
+            .state('inicio.cambiocont', {
+                url: "/cambiar",
+                templateUrl: "views/cambiarcont.html",
+                data: { pageTitle: 'Cambiar contrasena' },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                        }
+                    ]);
+                    }
+                }
+            })
+
+            .state('inicioo', {
+                abstract: true,
+                url: "/inicio",
+                templateUrl: "views/common/content.html"
+            })
+        .state('inicioo.comisiones', {
+            url: "/comisiones",
+            templateUrl: "views/comisiones.html",
+            data: { pageTitle: 'Comisiones' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                        }
+                    ]);
+                }
+            }
+            })
+            
+//////////////////////////fin login
+
+/* Seccion para las tablas de clientes */
+    .state('tables', {
+            abstract: true,
+            url: "/tables",
+            templateUrl: "views/common/content.html"
+        })
+        //Tablas clientes por contactar
+        .state('tables.acontactar', {
+            url: "/a_contactar",
+            templateUrl: "views/tabla_contactados.html",
+            data: { pageTitle: 'A contactar' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                       {
+                            serie: true,
+                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        }
+                    ]);
+                }
+            }
+        })
+        //Tablas clientes vigentes
+        .state('tables.vigentes', {
+            url: "/vigentes",
+            templateUrl: "views/tabla_vigentes.html",
+            data: { pageTitle: 'Clientes vigentes' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        }
+                    ]);
+                }
+            }
+            })
+            //Tablas clientes proximos a vencer
+        .state('tables.avencer', {
+            url: "/a_vencer",
+            templateUrl: "views/tabla_porvencer.html",
+            data: { pageTitle: 'Clientes a vencer' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
+                        }
+                    ]);
+                }
+            }
+            })
+            ///para los productos
+            .state('tables.product_details', {
+                url: "/product_details",
+                templateUrl: "views/cliente_detalles.html",
+                data: { pageTitle: 'E-commerce Product detail' },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                        {
+                            files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                        },
+                        {
+                            name: 'slick',
+                            files: ['js/plugins/slick/angular-slick.min.js']
+                        }
+                    ]);
+                    }
+                }
+            })
+
+            //ranking
+            .state('tables.ranking', {
+                url: "/ranking",
+                templateUrl: "views/ranking.html",
+                data: { pageTitle: 'Ranking' },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                        {
+                            files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                        },
+                        {
+                            name: 'slick',
+                            files: ['js/plugins/slick/angular-slick.min.js']
+                        }
+                    ]);
+                    }
+                }
+            })
+
+            .state('tables.nuevocliente', {
+                url: "/nuevo",
+                templateUrl: "views/nuevo_cliente.html",
+                data: { pageTitle: 'Nuevo Cliente' },
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                        {
+                            files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                        },
+                        {
+                            name: 'slick',
+                            files: ['js/plugins/slick/angular-slick.min.js']
+                        }
+                    ]);
+                    }
+                }
+            })
+
+
+
+        .state('pages', {
+            abstract: true,
+            url: "/pages",
+            templateUrl: "views/common/content.html"
+        })
+             .state('pages.search_results', {
+                    url: "/search_results",
+                    templateUrl: "views/search_results.html",
+                    data: { pageTitle: 'Search results' }
+             })
+        ;
+
+}
+angular
+    .module('inspinia')
+    .config(config)
+    .run(function($rootScope, $state) {
+        $rootScope.$state = $state;
+    });
