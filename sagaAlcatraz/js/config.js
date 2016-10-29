@@ -224,6 +224,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                  url: "/clientes_vencidos",
                  templateUrl: "views/tabla_vencidos.html",
                  data: { pageTitle: 'Clientes vencidos' },
+               
                  resolve: {
                      loadPlugin: function ($ocLazyLoad) {
                          return $ocLazyLoad.load([
