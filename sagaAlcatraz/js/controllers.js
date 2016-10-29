@@ -61,46 +61,6 @@ function MainCtrl($q, $http) {
      * countries - Used as duallistbox in form advanced view
      */
 
-    //var getAllAlertTypes = function () {
-    //    var deferred = $q.defer();
-
-    //    $http.get('serverResponse.aspx?option=getReportUsuariosConHuellas'
-    //    ).success(function (data) {
-    //        deferred.resolve(data);
-    //    }).error(function () {
-    //        deferred.reject('Error getting all alert types');
-    //    });
-        
-    //    return deferred.promise;
-
-    //};
-
-    //console.log(getAllAlertTypes());
-
-    //var getclients = function () {
-    //    var q = $q.defer();
-
-    //    $http({
-    //        method: "GET",
-    //        url: "serverResponse.aspx",
-    //        params: {
-    //            option: "getReportUsuariosConHuellas"
-    //        }
-    //    })
-    //        .success(function (data, status, headers, config) {
-    //            q.resolve(data);
-    //        })
-    //        .error(function (data, status, headers, config) {
-    //            q.reject(data);
-    //        }
-            
-    //    );
-    //    return q.promise;
-    //};
-
-    
-    //console.log(getclients());
-
     this.countries = [
         { name: 'Amsterdam' },
         { name: 'Washington' },
@@ -3003,8 +2963,8 @@ function datatablesCtrl($scope,DTOptionsBuilder,$http){
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
         .withButtons([
-            {extend: 'copy'},
-            {extend: 'csv'},
+            //{extend: 'copy'},
+            //{extend: 'csv'},
             {extend: 'excel', title: 'ExampleFile'},
             {extend: 'pdf', title: 'ExampleFile'},
 
@@ -3026,6 +2986,16 @@ function datatablesCtrl($scope,DTOptionsBuilder,$http){
             console.log(response);
         });
 
+    /* tablaVencidos = function() {
+        $http.get('Service1.asmx/vencidos')
+        .then(function (response) {
+            $scope.employees = response.data.Table;
+            console.log(response);
+        });*/
+   
+     
+        
+
 }
 
 /* nuevo controlador */
@@ -3034,8 +3004,8 @@ function datatablesCtl($scope,DTOptionsBuilder,$http){
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
         .withButtons([
-            {extend: 'copy'},
-            {extend: 'csv'},
+           //{extend: 'copy'},
+            //{extend: 'csv'},
             {extend: 'excel', title: 'ExampleFile'},
             {extend: 'pdf', title: 'ExampleFile'},
 
@@ -3050,13 +3020,13 @@ function datatablesCtl($scope,DTOptionsBuilder,$http){
                 }
             }
         ]);
-
-     $http.get('Service2.asmx/GetAllEmployees2')
-        .then(function (response) {
-            $scope.clientvencerr = response.data.Table;
-            console.log(response);
-        });
-
+        console.log($scope);
+            $http.get('Service2.asmx/GetAllEmployees2')
+             .then(function (response) {
+                $scope.clientvencerr = response.data.Table;
+                //console.log(response.config.url);
+                 //console.log($scope);
+             });
 }
 
 function truncateCtrl($scope){
