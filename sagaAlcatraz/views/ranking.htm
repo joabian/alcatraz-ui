@@ -1,7 +1,58 @@
-﻿
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Ranking diario</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="content.ranking">Vendedores</a>
+            </li>
+
+            <li class="active">
+                <strong>Ranking</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="datatablesCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ranking</h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Ventas</th>
+                            <th>Comisi&oacuten</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="employee in employees">
+                            <td><i class="fa fa-sort-amount-desc 6x"></i></td>
+                            <td></td>
+                            <td>{{employee.name}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<div class="row wrapper border-bottom white-bg page-heading">
+<!--<div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h1>Ranking diario</h1>
         <ol class="breadcrumb">
@@ -15,6 +66,7 @@
         </ol>
     </div>
 </div>
+
 <div class="wrapper wrapper-content">
     <div class="row animated fadeInRight">
         <div class="col-lg-12">
@@ -31,9 +83,13 @@
             <h3>Ranking</h3>
         </div>
 
-        <div class="forum-item active">
-            <div class="row">
-                <div class="col-md-9">
+
+        <!--- Aquí va el ganador -->
+        
+        <!--<div class="forum-item active">
+            <div class="row"  >
+                <div class="col-md-9" >
+                
                     <div class="forum-icon">
                         <i class="fa fa-trophy 6x"></i>
                     </div>
@@ -42,7 +98,7 @@
                         <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a2.jpg">
                     </div>
                     
-                    <a class="forum-item-title">Mike Ramos</a>
+                    <a class="forum-item-title">{{employee.name}}</a>
                     <div class="forum-sub-title">Vendedor estrella del d&iacutea</div>
                 </div>
                 <div class="col-md-1 forum-info">
@@ -60,13 +116,22 @@
                     <div>
                         <small>Comisi&oacuten</small>
                     </div>
+                    
                 </div>
                 
             </div>
         </div>
-        <div class="forum-item">
+        
+
+
+        <!---- Aquí va el resto de los vendedores -->
+      
+       <!--<div class="forum-item">
+       
             <div class="row">
+            
                 <div class="col-md-9">
+                
                     <div class="forum-icon">
                         <i class="fa fa-sort-amount-desc 6x"></i>
                     </div>
@@ -74,7 +139,7 @@
                     <div class="col-md-1">
                         <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a5.jpg">
                     </div>
-                    <a ui-sref="miscellaneous.forum_post_view" class="forum-item-title">Laura Ruedas</a>
+                    <a ui-sref="miscellaneous.forum_post_view" class="forum-item-title">{{employee.name}}</a>
                     <div class="forum-sub-title">&iexclTu puedes lograrlo!</div>
                 </div>
                 <div class="col-md-1 forum-info">
@@ -93,76 +158,11 @@
                         <small>Comisi&oacuten</small>
                     </div>
                 </div>
-                
+               </tr>
             </div>
         </div>
-        
-        <div class="forum-item">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="forum-icon">
-                        <i class="fa fa-sort-amount-desc 6x"></i>
-                    </div>
-
-                    <div class="col-md-1">
-                        <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a7.jpg">
-                    </div>
-                    <a ui-sref="miscellaneous.forum_post_view" class="forum-item-title">Emilio Mendoza Zapata</a>
-                    <div class="forum-sub-title">&iexclTu puedes lograrlo!</div>
-                </div>
-                <div class="col-md-1 forum-info">
-                                        <span class="views-number">
-                                            2
-                                        </span>
-                    <div>
-                        <small>Ventas</small>
-                    </div>
-                </div>
-                <div class="col-md-1 forum-info">
-                                        <span class="views-number">
-                                            $600.00
-                                        </span>
-                    <div>
-                        <small>Comisi&oacuten</small>
-                    </div>
-                </div>
-                
+     
             </div>
-        </div>
-
-        <div class="forum-item">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="forum-icon">
-                        <i class="fa fa-sort-amount-desc 6x"></i>
-                    </div>
-
-                    <div class="col-md-1">
-                        <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a3.jpg">
-                    </div>
-                    <a ui-sref="miscellaneous.forum_post_view" class="forum-item-title">Cristina Cardoza G&oacutemez</a>
-                    <div class="forum-sub-title">&iexclTu puedes lograrlo!</div>
-                </div>
-                <div class="col-md-1 forum-info">
-                                        <span class="views-number">
-                                            0
-                                        </span>
-                    <div>
-                        <small>Ventas</small>
-                    </div>
-                </div>
-                <div class="col-md-1 forum-info">
-                                        <span class="views-number">
-                                            $0.00
-                                        </span>
-                    <div>
-                        <small>Comisi&oacuten</small>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        </div>
         </div>
         </div>
     </div>

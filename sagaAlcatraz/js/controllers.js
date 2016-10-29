@@ -2349,6 +2349,9 @@ function formValidation($scope) {
     $scope.signupForm = function() {
         if ($scope.signup_form.$valid) {
             // Submit as normal
+            alert();
+
+
         } else {
             $scope.signup_form.submitted = true;
         }
