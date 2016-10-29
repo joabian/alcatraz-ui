@@ -102,12 +102,19 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
+                       {
+                           serie: true,
+                           files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                       },
                         {
-                            files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
                         },
                         {
-                            name: 'slick',
-                            files: ['js/plugins/slick/angular-slick.min.js']
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
                         }
                     ]);
                     }
@@ -127,12 +134,19 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
+                       {
+                           serie: true,
+                           files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
+                       },
                         {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                            serie: true,
+                            name: 'datatables',
+                            files: ['js/plugins/dataTables/angular-datatables.min.js']
                         },
                         {
-                            files: ['css/plugins/iCheck/custom.css', 'js/plugins/iCheck/icheck.min.js']
+                            serie: true,
+                            name: 'datatables.buttons',
+                            files: ['js/plugins/dataTables/angular-datatables.buttons.min.js']
                         }
                     ]);
                     }
@@ -242,25 +256,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                  url: "/nuevo_cliente",
                  templateUrl: "views/nuevo_cliente.html",
                  data: { pageTitle: 'Nuevo Cliente' },
-                 resolve: {
-                     loadPlugin: function ($ocLazyLoad) {
-                         return $ocLazyLoad.load([
-                        {
-                            files: ['css/plugins/slick/slick.css', 'css/plugins/slick/slick-theme.css', 'js/plugins/slick/slick.min.js']
-                        },
-                        {
-                            name: 'slick',
-                            files: ['js/plugins/slick/angular-slick.min.js']
-                        }
-                    ]);
-                     }
-                 }
-             })
-
-             .state('content.cli_detalles', {
-                 url: "/detalles_del_cliente",
-                 templateUrl: "views/cliente_detalles.html",
-                 data: { pageTitle: 'Detalles del cliente' },
                  resolve: {
                      loadPlugin: function ($ocLazyLoad) {
                          return $ocLazyLoad.load([
